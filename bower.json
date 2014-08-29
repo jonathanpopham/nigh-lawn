@@ -2,7 +2,8 @@
   "name": "nylon",
   "version": "0.0.1",
   "authors": [
-    "(amrosado <arosad2@emory.edu>)"
+    "(amrosado <arosad2@emory.edu>)",
+      "(jonathanpopham <jonathan.popham@gmail.com>"
   ],
   "description": "\"trying to make a RESTful service to mesh Polymer with the backend\"",
   "main": "bower_components/polymer/core-components-page/index.html",
