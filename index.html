@@ -2,25 +2,32 @@
 <html>
 <head lang="en">
     <script src="bower_components/platform/platform.js"></script>
-    <script src="bower_components/polymer/polymer.js"></script>
+    <link rel="import" href="bower_components/core-ajax/core-ajax.html">
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
-    <core-ajax auto="true" method="GET" url="http://localhost:8080/yelpSearch" params='{"term":"Mexican", "location":"Atlanta"}' handleAs="json" on-core-response="{{handleResponse}}"></core-ajax>
-    <script>
-        document.addEventListener('polymer-ready', function() {
-            var ajax = document.querySelector("core-ajax");
-            ajax.addEventListener("core-response",
-                    function(e) {
-                        document.querySelector('template').model = {
-                            response: e.detail.response
-                        };
-                    }
-            );
-        });
-    </script>
-    <template repeat="{{response.feed.entry}}"></template>
-    <div></div>
+<core-ajax
+        auto
+        url="http://localhost:8080/_ah/api/foodyo/v1/yelpSearch"
+        params='{"location":"Atlanta", "term":"Mexican"}'
+        handleAs="json"
+        on-core-response="{{handleResponse}}"></core-ajax>
+    <template repeat="{{response.businesses}}">
+        <div>{{name}}</div>
+    </template>
+<script>
+    document.addEventListener('polymer-ready', function() {
+        var ajax = document.querySelector("core-ajax");
+        ajax.addEventListener("core-response",
+                function(e) {
+                    console.log(e);
+                    document.querySelector('template').model = {
+                        response: e.detail.response
+                    };
+                }
+        );
+    });
+</script>
 </body>
 </html>
