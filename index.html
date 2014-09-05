@@ -2,25 +2,14 @@
 <html>
 <head lang="en">
     <script src="bower_components/platform/platform.js"></script>
-    <script src="bower_components/polymer/polymer.js"></script>
+    <link rel="import" href="aaron-comp.html">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Core AJAX</title>
 </head>
 <body>
-    <core-ajax auto="true" method="GET" url="http://localhost:8080/yelpSearch" params='{"term":"Mexican", "location":"Atlanta"}' handleAs="json" on-core-response="{{handleResponse}}"></core-ajax>
-    <script>
-        document.addEventListener('polymer-ready', function() {
-            var ajax = document.querySelector("core-ajax");
-            ajax.addEventListener("core-response",
-                    function(e) {
-                        document.querySelector('template').model = {
-                            response: e.detail.response
-                        };
-                    }
-            );
-        });
-    </script>
-    <template repeat="{{response.feed.entry}}"></template>
-    <div></div>
+  <core-ajax id="query" auto url="http://gdata.youtube.com/feeds/api/videos/" 
+      params='{"alt":"json", "q":"chrome"}'
+      handleAs="json" response="{{resp}}"></core-ajax>
+  <aaron-comp></aaron-comp>
 </body>
 </html>
