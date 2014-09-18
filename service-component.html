@@ -1,0 +1,32 @@
+<link rel="import"
+      href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/core-ajax/core-ajax.html">
+<polymer-element name="service-component" attributes="url response">
+ <template>
+    <style>
+      :host {
+        display: none;
+      }
+    </style>
+    <core-ajax auto id="request"
+      url="{{url}}"
+      params='{"alt":"json", "q":"chrome"}'
+      on-core-response="{{handleResponse}}"
+      on-core-error="{{handleError}}" 
+      handleAs="json" hidden></core-ajax>
+  </template>
+  <script>
+    Polymer('service-component', {
+      ready: function() {
+        console.log(this.$.request);
+        this.response = [];
+      },
+      handleResponse: function() {
+        console.log(this.$.request.response);
+        this.response = this.$.request.response;
+      },
+      handleError: function() {
+      }
+    });
+  </script>
+</polymer-element>
