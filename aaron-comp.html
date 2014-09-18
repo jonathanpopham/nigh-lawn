@@ -1,15 +1,25 @@
-<script src="bower_components/platform/platform.js"></script>
 <link rel="import"
       href="bower_components/polymer/polymer.html">
-<link rel="import" src="bower_components/core-ajax/core-ajax.html">
-<polymer-element name="aaron-comp">
-        <core-ajax id="query" auto url="http://gdata.youtube.com/feeds/api/videos/" 
-            params='{"alt":"json", "q":"chrome"}'
-            handleAs="json" response="{{resp}}"></core-ajax>
-       <template repeat="{{resp.detail.response.feed.entry}}">
-          <div>{{title.$t}}</div>
-        </template>
+<link rel="import" href="service-component.html">
+<polymer-element name="aaron-comp" 
+  attributes="url" >
+    <template>
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <service-component id="service" url="{{url}}" response="{{response}}"></service-component>
+      <template repeat="{{response.feed.entry}}">
+        <div>{{title.$t}}</div>
+      </template>
+    </template>
   <script>
-  Polymer('aaron-comp', {});
+  Polymer('aaron-comp', {
+    ready: function () {
+      
+    },
+  });
+
   </script> 
 </polymer-element>
