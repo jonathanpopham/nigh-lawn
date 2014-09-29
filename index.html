@@ -8,30 +8,6 @@
     <title>Core AJAX</title>
 </head>
 <body>
-<!--
-    <core-ajax
-        auto
-        url="http://localhost:8080/_ah/api/foodyo/v1/yelpSearch"
-        params='{"location":"Atlanta", "term":"Mexican"}'
-        handleAs="json"
-        on-core-response="{{handleResponse}}"></core-ajax>
-    <template repeat="{{response.businesses}}">
-        <div>{{name}}</div>
-    </template>
-<script>
-    document.addEventListener('polymer-ready', function() {
-        var ajax = document.querySelector("core-ajax");
-        ajax.addEventListener("core-response",
-                function(e) {
-                    console.log(e);
-                    document.querySelector('template').model = {
-                        response: e.detail.response
-                    };
-                }
-        );
-    });
-</script>
--->
-<aaron-comp url="http://gdata.youtube.com/feeds/api/videos/"></aaron-comp>
+  <aaron-comp url="http://gdata.youtube.com/feeds/api/videos/"></aaron-comp>
 </body>
 </html>

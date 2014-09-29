@@ -18,11 +18,9 @@
   <script>
     Polymer('service-component', {
       ready: function() {
-        console.log(this.$.request);
         this.response = [];
       },
       handleResponse: function() {
-        console.log(this.$.request.response);
         this.response = this.$.request.response;
       },
       handleError: function() {
